@@ -51,4 +51,6 @@ app.get('/api/item/:slug', (req, res) => {
   res.end(`Item: ${slug}`);
 });
 
+app.listen(process.env.PORT || 8080);
+
 module.exports = app;
