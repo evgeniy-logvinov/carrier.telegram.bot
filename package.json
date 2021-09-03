@@ -1,0 +1,19 @@
+{
+  "name": "telegram.bot.carrier",
+  "version": "1.0.0",
+  "description": "Telegram bot for auction access",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evgeniy-logvinov/telegram.bot.carrier.git"
+  },
+  "author": "evgeniy.logvinov.k",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/evgeniy-logvinov/telegram.bot.carrier/issues"
+  },
+  "homepage": "https://github.com/evgeniy-logvinov/telegram.bot.carrier#readme"
+}
