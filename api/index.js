@@ -60,6 +60,7 @@ process.env.NTBA_FIX_319 = 'test';
 
 // Require our Telegram helper package
 const TelegramBot = require('node-telegram-bot-api');
+const bot = new TelegramBot(process.env.BOT_TOKEN);
 
 // Export as an asynchronous function
 // We'll wait until we've responded to the user
@@ -69,7 +70,6 @@ module.exports = async (request, response) => {
         // Create our new bot handler with the token
         // that the Botfather gave us
         // Use an environment variable so we don't expose it in our code
-        const bot = new TelegramBot(process.env.BOT_TOKEN);
 
         // Retrieve the POST request body that gets sent from Telegram
         const { body } = request;
