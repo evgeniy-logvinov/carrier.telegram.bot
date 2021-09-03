@@ -1,6 +1,7 @@
 const app = require('express')();
 const { v4 } = require('uuid');
 
+console.log('test');
 app.get('/api', (req, res) => {
   const path = `/api/item/${v4()}`;
   res.setHeader('Content-Type', 'text/html');
@@ -14,5 +15,3 @@ app.get('/api/item/:slug', (req, res) => {
 });
 
 module.exports = app;
-
-console.log('test');
