@@ -88,7 +88,7 @@ module.exports = async (request, response) => {
             // wait for the request to finish
             await bot.sendMessage(id, message, {parse_mode: 'Markdown'});
             setTimeout(async () => {
-                await bot.sendMessage(id, 'message', {parse_mode: 'Markdown'});
+                await bot.sendMessage(id, 'message:' + message, {parse_mode: 'Markdown'});
             }, 5000);
         }
     }
