@@ -98,12 +98,13 @@ module.exports = async (request, response) => {
         console.error('Error sending message');
         console.log(error.toString());
     }
-    
+
     // Acknowledge the message with Telegram
     // by sending a 200 HTTP status code
     // The message here doesn't matter.
     response.send('OK');
 };
+// curl -X POST https://api.telegram.org/bot1992554316:AAEHK6OU7lPf2IuY2tvQr_0s-FXbb8lclIo/setWebhook -H "Content-type: application/json" -d '{"url": "https://telegram-bot-carrier-8chkwz0it-carrier.vercel.app/api"}'
 
 // // Export as an asynchronous function
 // // We'll wait until we've responded to the user
