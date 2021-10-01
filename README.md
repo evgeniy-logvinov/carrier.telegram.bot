@@ -1,6 +1,8 @@
 # telegram-bot-carrier
 
 This is the service which helps send some messages to activate tinkoff api
+Service use RabbitMq to get and send messages.
+Need to set channel which get information messages and bot token which will get commands from the user
 
 ## .env
 
