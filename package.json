@@ -1,17 +1,32 @@
 {
   "name": "telegram.bot.carrier",
   "version": "1.0.0",
-  "description": "Telegram bot for auction access",
-  "main": "index.js",
+  "description": "Telegram bot for carrier service",
+  "engines": {
+    "node": ">=12.18.3"
+  },
+  "main": "dist/server.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "[ \"$CI\" = true ] && eslint --quiet -f codeframe --ext js,ts . || eslint --ext js,ts .",
+    "eslint:fix": "[ \"$CI\" = true ] && eslint --quiet -f codeframe --ext js,ts . --fix || eslint --ext js,ts . --fix",
+    "lint": "npm run eslint && npm run tsc",
+    "test": "npm run lint && npm run test:api",
+    "test:api": "jest --testPathPattern=test/",
+    "start:prod": "NODE_ENV=production nodemon server.ts",
+    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
+    "postinstall": "npm run build-ts",
+    "build-ts": "tsc",
+    "start": "npm run serve",
+    "start:dev": "nodemon src/server.ts",
+    "serve": "node dist/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/evgeniy-logvinov/telegram.bot.carrier.git"
   },
-  "author": "evgeniy.logvinov.k",
+  "author": {
+    "name": "evgeniy.logvinov.k@gmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/evgeniy-logvinov/telegram.bot.carrier/issues"
@@ -19,8 +34,19 @@
   "homepage": "https://github.com/evgeniy-logvinov/telegram.bot.carrier#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "node-telegram-bot-api": "^0.54.0",
-    "uuid": "^8.3.2"
+    "amqplib": "^0.8.0",
+    "node-telegram-bot-api": "^0.54.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.17.16",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.1",
+    "eslint-plugin-notice": "^0.9.10",
+    "nodemon": "^1.18.3",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^10.2.1",
+    "tslib": "^2.3.1",
+    "typescript": "^3.0.1"
   }
 }
