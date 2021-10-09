@@ -90,6 +90,7 @@ const send = () => {
     await pipeline.create();
     await Promise.all([generateRoutingKey.subscribe(), sendToTelegramChannel.subscribe()]);
   } catch (error) {
+    console.log(error);
     console.error(error);
     process.exit(1);
   }

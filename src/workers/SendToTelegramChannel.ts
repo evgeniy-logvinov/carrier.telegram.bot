@@ -15,7 +15,7 @@
  */
 import { Worker } from '../servers/Worker';
 import { TelegramMessage } from '../interfaces';
-import { TelegramSender } from '../servers/TelegramSender';
+import { TelegramChannelSender } from '../servers/TelegramChannelSender';
 
 export class SendToTelegramChannel extends Worker<TelegramMessage> {
   constructor() {
@@ -26,11 +26,11 @@ export class SendToTelegramChannel extends Worker<TelegramMessage> {
       maxRetry: process.env.MAX_RETRY ? parseInt(process.env.MAX_RETRY, 10) : 5,
     });
   }
+
   protected async handler(message: TelegramMessage) {
     try {
       console.log('Sending to telegram: ', message.message, ' channelName: ', message.channelName);
-      const telegramBot = new TelegramSender();
-      await telegramBot.sendMessageToChannel(message.channelName, message.message);
+      await TelegramChannelSender.sendMessageToChannel(message.channelName, message.message);
       await this.ack();
     } catch (error) {
       console.error(error);
