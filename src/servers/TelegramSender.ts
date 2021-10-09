@@ -13,15 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+// @ts-ignore
+process.env.NTBA_FIX_319 = 1;
+
 import TelegramBot from 'node-telegram-bot-api';
 
-export class TelegramServer {
+export class TelegramSender {
   bot: any = '';
-  channelName: string = '';
 
-  constructor(channelName: string) {
+  constructor() {
     const botToken = process.env.BOT_TOKEN;
-    this.channelName = channelName;
 
     if (botToken)
       this.bot = new TelegramBot(botToken);
@@ -29,8 +30,8 @@ export class TelegramServer {
       throw new Error('Token is empty');
   }
 
-  async sendMessageToChannel(text: string): Promise<void> {
-    const message = `✅ Thanks for your message: *"${text}"*\nHave a great day! 👋🏻`;
-    await this.bot.sendMessage(this.channelName, message, {parse_mode: 'Markdown'});
+  async sendMessageToChannel(channelName: string, message: string): Promise<void> {
+    // const message = `✅ Thanks for your message: *"${text}"*\nHave a great day! 👋🏻`;
+    await this.bot.sendMessage(channelName, message, {parse_mode: 'Markdown'});
   }
 }

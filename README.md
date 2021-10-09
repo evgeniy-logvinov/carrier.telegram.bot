@@ -9,3 +9,11 @@ Need to set channel which get information messages and bot token which will get 
 BOT_TOKEN bot token from telegram
 CHANNEL_NAME channel name where message will be send `@name_channel`
 RABBIT_MQ_URL url for rabbitmq server where contains messages
+
+## Rabbit MQ messages
+
+notify.sendToTelegramChannel
+
+### Links
+
+https://habr.com/ru/post/469991/

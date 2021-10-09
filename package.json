@@ -33,11 +33,12 @@
   },
   "homepage": "https://github.com/evgeniy-logvinov/telegram.bot.carrier#readme",
   "dependencies": {
-    "dotenv": "^10.0.0",
     "amqplib": "^0.8.0",
+    "dotenv": "^10.0.0",
     "node-telegram-bot-api": "^0.54.0"
   },
   "devDependencies": {
+    "@types/amqplib": "^0.8.2",
     "@types/node": "^14.17.16",
     "@types/node-telegram-bot-api": "^0.53.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
