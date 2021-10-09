@@ -31,7 +31,7 @@ export class TelegramSender {
   }
 
   async sendMessageToChannel(channelName: string, message: string): Promise<void> {
-    // const message = `✅ Thanks for your message: *"${text}"*\nHave a great day! 👋🏻`;
-    await this.bot.sendMessage(channelName, message, {parse_mode: 'Markdown'});
+    const formattedMessage = `✅ Thanks for your message: *"${message}"*\nHave a great day! 👋🏻`;
+    await this.bot.sendMessage(channelName, formattedMessage, {parse_mode: 'Markdown'});
   }
 }

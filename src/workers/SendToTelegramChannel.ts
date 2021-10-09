@@ -28,10 +28,8 @@ export class SendToTelegramChannel extends Worker<TelegramMessage> {
   }
   protected async handler(message: TelegramMessage) {
     try {
-      console.log(message.message);
       console.log('Sending to telegram: ', message.message, ' channelName: ', message.channelName);
       const telegramBot = new TelegramSender();
-      console.log('message', message);
       await telegramBot.sendMessageToChannel(message.channelName, message.message);
       await this.ack();
     } catch (error) {

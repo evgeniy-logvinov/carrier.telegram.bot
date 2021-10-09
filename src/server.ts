@@ -67,7 +67,7 @@ const send = () => {
           //   durable: false
           // });
           channel.publish(exchange, 'generateRoutingKey', Buffer.from(JSON.stringify(JSON.parse(JSON.stringify(telegramMessage)))));
-          console.log(" [x] Sent %s:'%s'", 'generateRoutingKey', telegramMessage);
+          // console.log(" [x] Sent %s:'%s'", 'generateRoutingKey', telegramMessage);
         } else {
           console.log('Channel name is empty.');
         }
