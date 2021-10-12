@@ -28,7 +28,7 @@ export class TelegramBotApi {
       throw new Error('Please fill tokens for api');
 
     if (!this.bot)
-      this.bot = new TelegramBot(botToken);
+      this.bot = new TelegramBot(botToken, {polling: true});
 
     return this.bot;
   }

@@ -21,6 +21,7 @@ import { GenerateRoutingKey } from './workers/GenerateRoutingKey';
 import { SendToTelegramChannel } from './workers/SendToTelegramChannel';
 import amqp from 'amqplib/callback_api';
 import { TelegramMessage } from './interfaces';
+import { TelegramUserSender } from './servers/TelegramUserSender';
 
 const send = () => {
   const rabbitMQURL = process.env.RABBIT_MQ_URL;
@@ -86,7 +87,9 @@ const send = () => {
     const pipeline = new Pipeline(pipelineConfig);
     const generateRoutingKey = new GenerateRoutingKey();
     const sendToTelegramChannel = new SendToTelegramChannel();
-    send();
+    // send();
+    const telegramUserSender = new TelegramUserSender();
+    telegramUserSender.startListening();
     await pipeline.create();
     await Promise.all([generateRoutingKey.subscribe(), sendToTelegramChannel.subscribe()]);
   } catch (error) {
