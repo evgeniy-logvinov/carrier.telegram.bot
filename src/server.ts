@@ -61,7 +61,7 @@ const send = () => {
         if (channelName) {
           const telegramMessage: TelegramMessage = {
             channelName: process.env.CHANNEL_NAME || '',
-            content: 'Data',
+            topic: 'Test',
             message: 'Message'
           };
           // channel.assertExchange(exchange, 'topic', {

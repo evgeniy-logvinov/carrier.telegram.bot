@@ -42,7 +42,7 @@ export interface PipelineConfig {
 export interface TelegramMessage {
   channelName: string;
   message: string;
-  content: string;
+  topic: string;
 }
 
 export interface Message<T extends TelegramMessage> {
