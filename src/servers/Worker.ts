@@ -87,9 +87,14 @@ export abstract class Worker<M extends TelegramMessage> extends RabbitConnect {
   }
   // Approve correct delivery
   protected async ack() {
-    if (this._currentConsumeMessage)
-      return this.currentChanel?.ack(this._currentConsumeMessage);
+    try {
+      if (this._currentConsumeMessage)
+        // console.log('this._currentConsumeMessage', this._currentConsumeMessage.fields.exchange, this._currentConsumeMessage.fields.deliveryTag);
+        return this.currentChanel?.ack(this._currentConsumeMessage);
 
+    } catch (err) {
+      console.log(err);
+    }
   }
   protected abstract handler(message: M): void;
 }

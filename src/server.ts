@@ -51,7 +51,7 @@ const send = () => {
           throw error1;
 
         // const exchange = 'notify';
-        const exchange = 'mainexchange';
+        const exchange = 'main';
         // const args = process.argv.slice(2);
         // const key = (args.length > 0) ? args[0] : 'sendToTelegram';
         // const key = (args.length > 0) ? args[0] : 'sendToTelegram';
@@ -86,12 +86,13 @@ const send = () => {
   try {
     const pipeline = new Pipeline(pipelineConfig);
     const generateRoutingKey = new GenerateRoutingKey();
-    const sendToTelegramChannel = new SendToTelegramChannel();
+    // const sendToTelegramChannel = new SendToTelegramChannel();
     // send();
-    const telegramUserSender = new TelegramUserSender();
-    telegramUserSender.startListening();
+    // const telegramUserSender = new TelegramUserSender();
+    // telegramUserSender.startListening();
     await pipeline.create();
-    await Promise.all([generateRoutingKey.subscribe(), sendToTelegramChannel.subscribe()]);
+    await Promise.all([generateRoutingKey.subscribe()]);
+    // await Promise.all([generateRoutingKey.subscribe(), sendToTelegramChannel.subscribe()]);
   } catch (error) {
     console.log(error);
     console.error(error);

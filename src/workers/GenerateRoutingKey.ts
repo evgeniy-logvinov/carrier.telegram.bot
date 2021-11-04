@@ -24,7 +24,7 @@ export class GenerateRoutingKey extends Worker<TelegramMessage> {
   constructor() {
     super({
       active: 'generateRoutingKey',
-      exchange: 'mainexchange',
+      exchange: 'main',
     });
   }
   protected async handler(telegramMessage: TelegramMessage) {
